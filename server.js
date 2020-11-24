@@ -13,6 +13,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
+app.use('/js', express.static(path.join(__dirname, '/node_modules/popper/dist')));
+
 
 // Parse application body as JSON, url
 app.use(express.urlencoded({ extended: true }));
@@ -21,6 +23,8 @@ app.use(express.json());
 // Sets up template engine and defaultLayout
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.set('views', __dirname, '/views');
+
 
 // Import routes and give the server access to them.
 const routes = require("./controllers/users_controller.js");
