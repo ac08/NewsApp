@@ -19,7 +19,8 @@
     "cli",
     "heroku",
     "newsapi",
-    "mvc"
+    "mvc",
+    "express"
   ],
   "author": "Andrew Circelli",
   "license": "MIT",
@@ -29,8 +30,12 @@
   "homepage": "https://github.com/ac08/NewsApp#readme",
   "dependencies": {
     "axios": "^0.21.0",
+    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "jquery": "^3.5.1",
     "mysql": "^2.18.1",
+    "popper": "^1.0.1",
     "sequelize": "^6.3.5"
   }
 }
