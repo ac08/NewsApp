@@ -1,0 +1,36 @@
+{
+  "name": "newsapp",
+  "version": "1.0.0",
+  "description": "user friendly news app for customizing your feed for news",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ac08/NewsApp.git"
+  },
+  "keywords": [
+    "node.js",
+    "axios",
+    "mysql",
+    "sequelize",
+    "cli",
+    "heroku",
+    "newsapi",
+    "mvc"
+  ],
+  "author": "Andrew Circelli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ac08/NewsApp/issues"
+  },
+  "homepage": "https://github.com/ac08/NewsApp#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.3.5"
+  }
+}
