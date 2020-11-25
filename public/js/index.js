@@ -17,9 +17,10 @@ function getEverything() {
   .catch(err => console.error(err));
 }
 
+// possible categories business entertainment general health science sports technology
 function getTechnology() {
   axios
-  .get('https://newsapi.org/v2/sources?category=technology&apiKey=245b93f17234480c8618b219b2cee9e9', {
+  .get('https://newsapi.org/v2/top-headlines?category=technology&apiKey=245b93f17234480c8618b219b2cee9e9', {
     timeout: 5000
   })
   .then(res => showOutput(res))
@@ -66,4 +67,3 @@ function showOutput(res) {
 document.getElementById('headlines').addEventListener('click', getHeadlines);
 document.getElementById('everything').addEventListener('click', getEverything);
 document.getElementById('tech').addEventListener('click', getTechnology);
-
