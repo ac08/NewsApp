@@ -8,7 +8,7 @@ function getTodos() {
   //   method: 'get',
   //   url: 'https://jsonplaceholder.typicode.com/todos',
   //   params: {
-  //     _limit: 5
+  //     _limit: 5 // this is specific to API
   //   }
   // })
   //   .then(res => showOutput(res))
