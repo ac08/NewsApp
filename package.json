@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "DEBUG=app nodemon server.js",
+    "lint": "eslint server.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,10 @@
     "heroku",
     "newsapi",
     "mvc",
-    "express"
+    "express",
+    "morgan",
+    "chalk",
+    "eslint"
   ],
   "author": "Andrew Circelli",
   "license": "MIT",
@@ -30,17 +33,35 @@
   },
   "homepage": "https://github.com/ac08/NewsApp#readme",
   "dependencies": {
-    "@popperjs/core": "^2.5.4",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "chalk": "^4.1.0",
+    "debug": "^4.3.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
     "newsapi": "^2.4.1",
     "nodemon": "^2.0.6",
-    "popper.js": "^1.16.1",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "nodemonConfig": {
+    "restartable": "rs",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay": "2500",
+    "env": {
+      "NODE_ENV": "development",
+      "PORT": 4000
+    }
   }
 }
