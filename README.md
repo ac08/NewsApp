@@ -59,3 +59,44 @@ You are required to submit the following:
 * The URL of the deployed application
 
 * The URL of the GitHub repository
+
+
+#### Directory Structure (we will need to set this up per our structure)
+
+Below is how the directory is set up using MVC design.
+
+```
+.
+├── config
+│   ├── connection.js
+│   └── orm.js
+│ 
+├── controllers
+│   └── burgers_controller.js
+│
+├── db
+│   ├── schema.sql
+│   └── seeds.sql
+│
+├── models
+│   └── burger.js
+│ 
+├── node_modules
+│ 
+├── package.json
+│
+├── public
+│   └── assets
+│       ├── css
+│       │   └── burger_style.css
+│       └── img
+│           └── burger.png
+│   
+│
+├── server.js
+│
+└── views
+    ├── index.handlebars
+    └── layouts
+        └── main.handlebars
+```
