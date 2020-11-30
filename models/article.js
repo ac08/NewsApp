@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         isUrl: true
       }
     },
-    publishedAt: DataTypes.STRING, // DOES THIS NEED TO BE DATETIME/DATE TYPE?
+    publishedAt: DataTypes.DATE, // DOES THIS NEED TO BE DATETIME/DATE TYPE?
     content: DataTypes.TEXT
   });
   return Article;
