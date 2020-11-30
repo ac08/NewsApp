@@ -14,9 +14,6 @@ const exphbs = require('express-handlebars');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-// Requiring our models for syncing
-const db = require('./models');
-
 // Sets up Morgan tool
 app.use(morgan('tiny'));
 
@@ -42,6 +39,9 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('views', __dirname, '/views');
+
+// Requiring our models for syncing
+const db = require('./models');
 
 // Routes
 // =============================================================

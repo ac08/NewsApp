@@ -1,16 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    // how to define ID of type UUID/UUID4
     first_nm: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(35),
       allowNull: false
     },
     last_nm: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(35),
       allowNull: false
     },
-    full_nm: DataTypes.STRING,
+    full_nm: DataTypes.STRING(70),
     country_cd: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2),
       defaultValue: 'us',
       validate: {
         isIn: {
