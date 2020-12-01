@@ -45,7 +45,9 @@ const db = require('./models');
 
 // Routes
 // =============================================================
+require('./controllers/banner_controller')(app);
 // require('./controllers/users_controller.js')(app);
+
 // POST Route to create single new User and return to the client
 app.post('/api/createUser', (req, res) => {
   db.User.create({
@@ -63,7 +65,7 @@ app.post('/api/createUser', (req, res) => {
     });
 });
 
-// GET Route to get singly User by Id, and include associated categories
+// GET Route to get single User by Id, and include associated categories
 app.get('/api/getUser/:id', (req, res) => {
   db.User.findAll({
     where: { id: req.params.id },
@@ -96,13 +98,15 @@ app.get('/api/getUser/:id', (req, res) => {
 //     });
 // });
 
+// GET Route to retreive each User with their selected Categories
 app.get('/api/getUserCategories', (req, res) => {
   db.User.findAll({
-    attributes: ['full_nm'],
+    attributes: ['full_nm', 'country_cd'],
     include: [{
       model: db.Category,
       as: 'Selected_Categories',
-      attributes: ['category']
+      attributes: ['category'],
+      through: { attributes: [] }
     }]
   })
     .then((output) => {
@@ -114,13 +118,15 @@ app.get('/api/getUserCategories', (req, res) => {
     });
 });
 
+// GET Route to retreive each Category with its associated Users
 app.get('/api/getCategoryUsers', (req, res) => {
   db.Category.findAll({
     attributes: ['category'],
     include: [{
       model: db.User,
       as: 'All_Users',
-      attributes: ['full_nm']
+      attributes: ['full_nm'],
+      through: { attributes: [] }
     }]
   })
     .then((output) => {
@@ -133,6 +139,7 @@ app.get('/api/getCategoryUsers', (req, res) => {
 });
 
 // PUT Route to add 1+ Categories by categoryId to an associated User
+// May have to consider a less dynamic Route, one for each Category
 app.put('/api/addCategory', (req, res) => {
   db.User.findAll({ where: { full_nm: req.body.full_nm } })
     .then((dbUser) => {
