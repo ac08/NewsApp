@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "Cleveland08!",
-    "database": "news_development",
+    "database": "news",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "Cleveland08!",
-    "database": "news_test",
+    "database": "news",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "Cleveland08!",
-    "database": "news_production",
+    "database": "news",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

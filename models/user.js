@@ -2,14 +2,14 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     // how to define ID of type UUID/UUID4
     first_nm: {
-      type: DataTypes.STRING(35),
+      type: DataTypes.STRING(225),
       allowNull: false
     },
     last_nm: {
-      type: DataTypes.STRING(35),
+      type: DataTypes.STRING(225),
       allowNull: false
     },
-    full_nm: DataTypes.STRING(70),
+    full_nm: DataTypes.STRING(225),
     country_cd: {
       type: DataTypes.STRING(2),
       defaultValue: 'us',
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 };
 
 // example catch on User.country_cd validation error
-// app.get('/', (req, res) => {
+// app.get('/createUser', (req, res) => {
 //   User.create([
 //   first_nm: 'John',
 //   last_nm: 'Doe',
