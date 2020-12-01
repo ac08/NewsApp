@@ -46,6 +46,7 @@ const db = require('./models');
 // Routes
 // =============================================================
 // require('./controllers/users_controller.js')(app);
+// POST Route to create single new User and return to the client
 app.post('/api/createUser', (req, res) => {
   db.User.create({
     first_nm: req.body.first_nm,
@@ -57,20 +58,108 @@ app.post('/api/createUser', (req, res) => {
     })
     .catch((err) => {
       // bring out of the message only using map (YT)
-      console.log(err);
+      debug(err);
       res.status(404).send(err);
     });
 });
 
+// GET Route to get singly User by Id, and include associated categories
+app.get('/api/getUser/:id', (req, res) => {
+  db.User.findAll({
+    where: { id: req.params.id },
+    include: [{
+      model: db.Category,
+      as: 'All_Categories',
+      attributes: ['category']
+    }]
+  })
+    .then((dbUser) => {
+      res.json(dbUser);
+    })
+    .catch((err) => {
+      debug(err);
+      res.status(404).send(err);
+    });
+});
+
+// PUT Route to add 1+ Users by userId to an associated Category
+// app.put('/api/addUser', (req, res) => {
+//   db.Category.findAll({ where: { category: req.body.category } })
+//     .then((dbCategory) => {
+//       // updates UserCategories Table
+//       dbCategory[0].addAll_Users(['1']);
+//     }).then(() => {
+//       res.send('User added to selected category');
+//     }).catch((err) => {
+//       debug(err);
+//       res.status(404).send(err);
+//     });
+// });
+
+app.get('/api/getUserCategories', (req, res) => {
+  db.User.findAll({
+    attributes: ['full_nm'],
+    include: [{
+      model: db.Category,
+      as: 'Selected_Categories',
+      attributes: ['category']
+    }]
+  })
+    .then((output) => {
+      res.json(output);
+    })
+    .catch((err) => {
+      debug(err);
+      res.status(404).send(err);
+    });
+});
+
+app.get('/api/getCategoryUsers', (req, res) => {
+  db.Category.findAll({
+    attributes: ['category'],
+    include: [{
+      model: db.User,
+      as: 'All_Users',
+      attributes: ['full_nm']
+    }]
+  })
+    .then((output) => {
+      res.json(output);
+    })
+    .catch((err) => {
+      debug(err);
+      res.status(404).send(err);
+    });
+});
+
+// PUT Route to add 1+ Categories by categoryId to an associated User
 app.put('/api/addCategory', (req, res) => {
   db.User.findAll({ where: { full_nm: req.body.full_nm } })
-    .then((User) => {
-      User.addSelected_Categories(['5', '6']);
-    }).then((data) => {
-      console.log(data);
+    .then((dbUser) => {
+      // updates UserCategories Table
+      dbUser[0].addSelected_Categories(['5', '6']);
+    }).then(() => {
       res.send('Categories added to selected user');
     }).catch((err) => {
-      console.log(err);
+      debug(err);
+      res.status(404).send(err);
+    });
+});
+
+// GET Route to view single Category by name and include its associated Users
+app.get('/api/viewCategory/:category', (req, res) => {
+  db.Category.findAll({
+    where: { category: req.params.category },
+    include: [{
+      model: db.User,
+      as: 'UserRef',
+      attributes: ['full_nm']
+    }]
+  })
+    .then((dbCategory) => {
+      res.json(dbCategory);
+    }).catch((err) => {
+      debug(err);
       res.status(404).send(err);
     });
 });
@@ -87,35 +176,32 @@ app.put('/api/addCategory', (req, res) => {
 //       res.json(dbCategory);
 //     });
 // });
-app.get('/api/getUsers', (req, res) => {
-  db.User.findAll({
-    where: { full_nm: 'Andrew Circelli' }
-    // include: [{
-    //   model: db.Category,
-    //   as: 'All_Categories',
-    //   attributes: ['category']
-    // }]
-  })
-    .then((dbUser) => {
-      res.json(dbUser);
-    });
-});
-
-// doesn't work because must use postRoute to create
-// app.use('/', async (req, res) => {
-//   const dbUser = await db.User.findAll({
-//     where: { full_nm: 'Andrew Circelli' }
-//   });
-//   const dbCategory = await db.Category.create({
-//     category: req.body.category
-//   });
-//   dbUser.setSelected_Categories([dbCategory.id]);
-// });
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize
-  .sync()
+  .sync({ force: true })
+  .then(() => {
+    db.Category.bulkCreate([
+      { category: 'business' },
+      { category: 'entertainment' },
+      { category: 'general' },
+      { category: 'health' },
+      { category: 'science' },
+      { category: 'sports' },
+      { category: 'technology' }
+    ]);
+  })
+  // TEST User.create and setSelected_Categories
+  .then(() => {
+    db.User.create({
+      first_nm: 'Andrew',
+      last_nm: 'Circelli',
+      country_cd: 'us'
+    }).then((user) => {
+      user.setSelected_Categories(['1', '2']);
+    });
+  })
   .then(() => {
     app.listen(PORT, () => {
       debug(`listening on PORT ${chalk.green(PORT)}`);

@@ -5,10 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false
   });
   Category.associate = (models) => {
-    // Category.hasMany(models.Article, {
-    //   as: 'All_Articles',
-    //   foreignKey: 'categoryId'
-    // });
+    Category.hasMany(models.Article, {
+      as: 'All_Articles',
+      foreignKey: 'categoryId'
+    });
     Category.belongsTo(models.User, {
       as: 'UserRef',
       foreignKey: 'userId'

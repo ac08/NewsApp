@@ -36,10 +36,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   User.associate = (models) => {
-    // User.hasMany(models.Category, {
-    //   as: 'All_Categories',
-    //   foreignKey: 'userId'
-    // });
+    User.hasMany(models.Category, {
+      as: 'All_Categories',
+      foreignKey: 'userId'
+    });
     User.belongsToMany(models.Category, {
       as: 'Selected_Categories',
       through: 'UserCategories',

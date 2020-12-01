@@ -1,17 +1,17 @@
 // // foreignKey = CategoryId and UserId in UserCategories table
-User.belongsToMany(Category, { as 'Selected_Categories', through 'UserCategories' });
+User.belongsToMany(Category, { as: 'Selected_Categories', through: 'UserCategories' });
 
 User.findById('req.params.id', {
   include: Category, as: 'Selected_Categories', 
   attribute: ['category'],
-})
+});
 
-Category.belongsToMany(User, { as 'All_Users', through 'UserCategories' });
+Category.belongsToMany(User, { as: 'All_Users', through: 'UserCategories' });
 
 Category.findById('req.params.id', {
   include: User, as: 'All_Users', 
   attribute: ['full_nm']
-})
+});
 
 User.create({
   first_nm: req.body.first_nm,
@@ -43,21 +43,20 @@ app.put('/addCategory', (req, res) => {
   });
 });
 
-
 //  all users with just their name as well as any associated categories 
 app.get('/getUserCategories', (req, res) => {
   User.findAll({
     attributes: ['full_nm'],
     include: [{
-      model: Category, as: 'Selected_Categories', 
+      model: Category, as: 'Selected_Categories',
       attributes: ['category']
     }]
   })
-  .then((output) => {
-    res.json(output)
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(404).send(err);
-  });
+    .then((output) => {
+      res.json(output);
+    })
+    .catch((err) => {
+      debug(err);
+      res.status(404).send(err);
+    });
 });
