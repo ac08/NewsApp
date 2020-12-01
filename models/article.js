@@ -21,7 +21,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     publishedAt: DataTypes.DATE, // DOES THIS NEED TO BE DATETIME/DATE TYPE?
     content: DataTypes.TEXT
+  }, {
+    timestamps: false
   });
+  Article.associate = (models) => {
+    Article.belongsTo(models.Category, {
+      as: 'All_Categories',
+      foreignKey: 'categoryId'
+    });
+  };
   return Article;
 };
 

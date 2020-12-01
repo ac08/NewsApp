@@ -33,23 +33,23 @@ Category.findById('Category.Id', {
 
 // // foreignKey used to link two tables together 
 // // puts foreignKey userId into Categories table
-Category.belongsTo(User, { as: 'UserRef', foreignKey: 'userId' });
+// Category.belongsTo(User, { as: 'UserRef', foreignKey: 'userId' });
 
 // // when using Category model to query categories must include model alias name
-Category.findById('Category.Id', {
-  include: [{
-    model: User, as: 'UserRef', 
-    attributes: ['full_nm']
-  }]
-});
+// Category.findById('Category.Id', {
+//   include: [{
+//     model: User, as: 'UserRef', 
+//     attributes: ['full_nm']
+//   }]
+// });
 
 // // request several categories 
-Category.findAll({ where: { category: 'req.params.category'}, 
-  include: [{ 
-    model: User, as: 'UserRef', 
-    attributes: ['full_nm'] 
-  }] 
-}); 
+// Category.findAll({ where: { category: 'req.params.category'}, 
+//   include: [{ 
+//     model: User, as: 'UserRef', 
+//     attributes: ['full_nm'] 
+//   }] 
+// }); 
 
 const userCategories = await Category.findAll({
   include: [{

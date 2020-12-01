@@ -1,6 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     // how to define ID of type UUID/UUID4
+    // try defining all PK in this dataType format
+    // id: {
+    //   field: 'UserId',
+    //   type: DataTypes.UUID,
+    //   defaultValue: DataTypes.UUIDV4,
+    //   primaryKey: true
+    // },
     first_nm: {
       type: DataTypes.STRING(225),
       allowNull: false
@@ -21,12 +28,24 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {
+    timestamps: false,
     hooks: {
       beforeCreate: (user) => {
         user.full_nm = `${user.first_nm} ${user.last_nm}`;
       }
     }
   });
+  User.associate = (models) => {
+    // User.hasMany(models.Category, {
+    //   as: 'All_Categories',
+    //   foreignKey: 'userId'
+    // });
+    User.belongsToMany(models.Category, {
+      as: 'Selected_Categories',
+      through: 'UserCategories',
+      foreignKey: 'userId'
+    });
+  };
   return User;
 };
 
