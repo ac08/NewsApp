@@ -1,5 +1,4 @@
 const express = require('express');
-const debug = require('debug')('app:categories_controller');
 
 const router = express.Router();
 const db = require('../models');
@@ -40,6 +39,7 @@ router.route('/getCategoryUsers')
 // PUT Route to add 1+ Categories by categoryId to an associated User
 // May have to consider a less dynamic Route, one for each Category
 router.route('/add')
+  // user clicks a button
   .put((req, res) => {
     (async function addCategories() {
       const { full_nm } = req.body;

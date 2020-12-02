@@ -9,6 +9,9 @@ module.exports = {
   },
   rules: {
     'comma-dangle': 0,
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'camelcase': 0,
+    'no-param-reassign': 0,
+    'quote-props': 0
   },
 };

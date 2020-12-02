@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         isUrl: true
       }
     },
-    publishedAt: DataTypes.DATE, // DOES THIS NEED TO BE DATETIME/DATE TYPE?
+    publishedAt: DataTypes.DATE,
     content: DataTypes.TEXT
   }, {
     timestamps: false

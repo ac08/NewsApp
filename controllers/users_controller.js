@@ -6,12 +6,13 @@ const db = require('../models');
 // // Routes
 // // =============================================================
 
-// GET Route to get single User by Id, and include associated categories
 // express.Router().route() can be used for chainable routes, meaning
 // one API for all the METHODS (GET, PUT, POST)
+
+// GET Route to get single User by Id, and include associated categories
 router.route('/view/:id')
   .get((req, res) => {
-    (async function query() {
+    (async function queryUser() {
       const { id } = req.params;
       const dbUser = await db.User.findAll({
         where: { id },
@@ -28,7 +29,7 @@ router.route('/view/:id')
 // POST Route to create single new User and return to the client
 router.route('/create')
   .post((req, res) => {
-    (async function create() {
+    (async function createUser() {
       const { first_nm } = req.body;
       const { last_nm } = req.body;
       const { country_cd } = req.body;
@@ -58,8 +59,8 @@ router.route('/create')
 // GET Route to retreive each User with their selected Categories
 router.route('/getUserCategories')
   .get((req, res) => {
-    (async function query() {
-      const dbUser = await db.User.findAll({
+    (async function queryUserCategories() {
+      const dbUserCategories = await db.User.findAll({
         attributes: ['full_nm', 'country_cd'],
         include: [{
           model: db.Category,
@@ -68,7 +69,7 @@ router.route('/getUserCategories')
           through: { attributes: [] }
         }]
       });
-      res.json(dbUser);
+      res.json(dbUserCategories);
     }());
   });
 

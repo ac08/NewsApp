@@ -1,13 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    // how to define ID of type UUID/UUID4
-    // try defining all PK in this dataType format
-    // id: {
-    //   field: 'UserId',
-    //   type: DataTypes.UUID,
-    //   defaultValue: DataTypes.UUIDV4,
-    //   primaryKey: true
-    // },
     first_nm: {
       type: DataTypes.STRING(225),
       allowNull: false
