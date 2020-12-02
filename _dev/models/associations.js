@@ -35,3 +35,17 @@ const userArticles = await Article.findAll({
     }
   }]
 });
+
+
+// does not work because you cannot assoicate same category to different users
+// possibly create the user (await); then create categories based on user selection
+// and addAll_Users using add method
+// router.post('/createCategory', (req, res) => {
+//   db.Category.create({
+//     category: req.body.category,
+//     userId: req.body.userId
+//   })
+//     .then((dbCategory) => {
+//       res.json(dbCategory);
+//     });
+// });

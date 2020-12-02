@@ -1,5 +1,3 @@
-// Server.js - This file is the initial starting point for the Node/Express server.
-
 // Dependencies
 // =============================================================
 const express = require('express');
@@ -46,7 +44,29 @@ const db = require('./models');
 // Routes
 // =============================================================
 require('./controllers/banner_controller')(app);
-require('./controllers/users_controller.js')(app);
+
+// Middleware
+// =============================================================
+const userRouter = require('./controllers/users_controller');
+const categoryRouter = require('./controllers/categories_controller');
+
+app.use('/api/user', userRouter);
+app.use('/api/category', categoryRouter);
+app.use((req, res, next) => {
+  const err = new Error('Page Not Found!');
+  err.status = 404;
+  next(err);
+});
+app.use((err, req, res, next) => {
+  // assign error status to the error that has been passed from the above middleware
+  // or if the error originated in another portion of app, assign 500 (Internal Server Error) status
+  res.status(err.status || 500);
+  res.json({
+    err: {
+      message: err.message
+    }
+  });
+});
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
@@ -80,4 +100,4 @@ db.sequelize
     });
   });
 
-// { force: true }
+// // { force: true }

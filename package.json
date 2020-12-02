@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "DEBUG=app nodemon server.js",
+    "start-WIN": "set DEBUG=app & nodemon server.js",
     "lint": "eslint server.js"
   },
   "repository": {
@@ -26,7 +27,7 @@
     "chalk",
     "eslint"
   ],
-  "author": "Andrew Circelli",
+  "author": "Group6",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ac08/NewsApp/issues"
