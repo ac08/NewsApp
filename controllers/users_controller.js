@@ -1,6 +1,4 @@
 const express = require('express');
-const { get } = require('jquery');
-const debug = require('debug')('app:users_controller');
 
 const router = express.Router();
 const db = require('../models');
@@ -12,27 +10,35 @@ const db = require('../models');
 // express.Router().route() can be used for chainable routes, meaning
 // one API for all the METHODS (GET, PUT, POST)
 router.route('/view/:id')
-  .get(async (req, res) => {
-    const dbUser = await db.User.findAll({
-      where: { id: req.params.id },
-      include: [{
-        model: db.Category,
-        as: 'All_Categories',
-        attributes: ['category']
-      }]
-    });
-    res.json(dbUser);
+  .get((req, res) => {
+    (async function query() {
+      const { id } = req.params;
+      const dbUser = await db.User.findAll({
+        where: { id },
+        include: [{
+          model: db.Category,
+          as: 'All_Categories',
+          attributes: ['category']
+        }]
+      });
+      res.json(dbUser);
+    }());
   });
 
 // POST Route to create single new User and return to the client
 router.route('/create')
-  .post(async (req, res) => {
-    const dbUser = await db.User.create({
-      first_nm: req.body.first_nm,
-      last_nm: req.body.last_nm,
-      country_cd: req.body.country_cd
-    });
-    res.json(dbUser);
+  .post((req, res) => {
+    (async function create() {
+      const { first_nm } = req.body;
+      const { last_nm } = req.body;
+      const { country_cd } = req.body;
+      const dbUser = await db.User.create({
+        first_nm,
+        last_nm,
+        country_cd
+      });
+      res.json(dbUser);
+    }());
   });
 
 // PUT Route to add 1+ Users by userId to an associated Category
@@ -51,17 +57,19 @@ router.route('/create')
 
 // GET Route to retreive each User with their selected Categories
 router.route('/getUserCategories')
-  .get(async (req, res) => {
-    const dbUser = await db.User.findAll({
-      attributes: ['full_nm', 'country_cd'],
-      include: [{
-        model: db.Category,
-        as: 'Selected_Categories',
-        attributes: ['category'],
-        through: { attributes: [] }
-      }]
-    });
-    res.json(dbUser);
+  .get((req, res) => {
+    (async function query() {
+      const dbUser = await db.User.findAll({
+        attributes: ['full_nm', 'country_cd'],
+        include: [{
+          model: db.Category,
+          as: 'Selected_Categories',
+          attributes: ['category'],
+          through: { attributes: [] }
+        }]
+      });
+      res.json(dbUser);
+    }());
   });
 
 module.exports = router;

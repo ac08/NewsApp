@@ -1,8 +1,10 @@
 // Dependencies
 // =============================================================
 const express = require('express');
+// colorize the console or debug messages
 const chalk = require('chalk');
 const debug = require('debug')('app');
+// log some things to console that have to do with web traffic
 const morgan = require('morgan');
 const path = require('path');
 const exphbs = require('express-handlebars');

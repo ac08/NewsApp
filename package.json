@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "DEBUG=app nodemon server.js",
+    "start": "DEBUG=app,app:* nodemon server.js",
     "start-WIN": "set DEBUG=app & nodemon server.js",
     "lint": "eslint server.js"
   },
