@@ -32,11 +32,11 @@ router.route('/create')
     (async function createUser() {
       const { first_nm } = req.body;
       const { last_nm } = req.body;
-      const { country_cd } = req.body;
+      // const { country_cd } = req.body;
       const dbUser = await db.User.create({
         first_nm,
-        last_nm,
-        country_cd
+        last_nm
+        // country_cd
       });
       res.json(dbUser);
     }());

@@ -19,12 +19,28 @@
         <button class="btn btn-primary my-3" id="headlines">Top Headlines</button>
         <button class="btn btn-info" id="everything">Everything (Bitcoin)</button>
         <button class="btn btn-warning" id="tech">Category (Technology)</button>
+        <button class="btn btn-dark" id="1">Add-Category (Business)</button>
+        <button class="btn btn-dark" id="2">Add-Category (Entertainment)</button>
+        <button class="btn btn-dark" id="3">Add-Category (General)</button>
+        
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="">First Name, Last Name, Country Code</span>
+          </div>
+          <input id="first_nm"type="text" class="form-control">
+          <input id="last_nm" type="text" class="form-control">
+          <!-- <input id="country_cd" type="text" class="form-control"> -->
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" id="create" type="button">Create User</button>
+          </div>  
+        </div>
+
       </div>
       <hr />
       <div id="res"></div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="/js/index.js"></script>  
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/news.js"></script>
   </body>
 </html>
