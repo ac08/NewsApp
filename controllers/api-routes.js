@@ -1,5 +1,5 @@
-const { response } = require('express');
-const express = require('express');const NewsAPI = require('newsapi');
+const express = require('express');
+const NewsAPI = require('newsapi');
 require('dotenv').config();
 
 const newsapi = new NewsAPI(process.env.NEWSAPIKEY);

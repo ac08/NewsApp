@@ -45,7 +45,7 @@ const db = require('./models');
 
 // Routes
 // =============================================================
-require('./controllers/banner_controller')(app);
+require('./controllers/banner-routes')(app);
 const apiRouter = require('./controllers/api-routes');
 
 app.use('/api', apiRouter);
@@ -83,21 +83,18 @@ db.sequelize
       { category: 'technology' }
     ]);
   })
-  // TEST User.create and setSelected_Categories
-  .then(() => {
-    db.User.create({
-      first_nm: 'Andrew',
-      last_nm: 'Circelli',
-      country_cd: 'us'
-    })
-      .then((user) => {
-        user.setSelected_Categories(['1', '2']);
-      });
-  })
+  // .then(() => {
+  //   db.User.create({
+  //     first_nm: 'Andrew',
+  //     last_nm: 'Circelli',
+  //     country_cd: 'us'
+  //   })
+  //     .then((user) => {
+  //       user.setSelected_Categories(['1', '2']);
+  //     });
+  // })
   .then(() => {
     app.listen(PORT, () => {
       debug(`listening on PORT ${chalk.green(PORT)}`);
     });
   });
-
-// // { force: true }

@@ -15,6 +15,7 @@ module.exports = {
     'no-param-reassign': 0,
     'quote-props': 0,
     'radix': 0,
-    'prefer-arrow-callback': 0
+    'prefer-arrow-callback': 0,
+    'no-plusplus': 0
   },
 };

@@ -11,14 +11,14 @@
         <div class="py-5 text-center">
           <h2>Customize Your News Feed</h2>
           <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
+          <hr class="m-auto">
         </div>
     
         <div class="row g-3">
           <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-muted">Available Categories</span>
-              <!-- if we have time we should make the value of the below span equal to no. of categories selected -->
-              <!-- <span class="badge bg-secondary rounded-pill">7</span> -->
+              <span id="counter" class="badge bg-light border pill">0</span>
             </h4>
             <ul class="list-group mb-3">
               <li id="business" class="list-group-item d-flex justify-content-between lh-sm category">
@@ -71,7 +71,7 @@
                 <span class="text-muted">7</span>
               </li>
             </ul>
-            <button id="submit" class="w-100 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
+            <button id="submit" class="w-100 mb-2 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
           </div>
           
           <div class="col-md-7 col-lg-8">
@@ -90,19 +90,21 @@
             </form>
           </div>
         </div>
+        
+        <!-- handlebars -->
+        <div id="res"></div>
       </main>
     
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <ul class="list-inline">
-          <!-- on-click events could just route to a page with (6) blog posts related to that category only -->
-          <!-- this would require a dynamic on click event -->
-          <li class="list-inline-item"><a href="api/business">Business</a></li>
-          <li class="list-inline-item"><a href="api/entertainment">Entertainment</a></li>
-          <li class="list-inline-item"><a href="api/general">General</a></li>
-          <li class="list-inline-item"><a href="api/health">Health</a></li>
-          <li class="list-inline-item"><a href="api/science">Science</a></li>
-          <li class="list-inline-item"><a href="api/sports">Sports</a></li>
-          <li class="list-inline-item"><a href="api/technology">Technology</a></li>
+        <hr>
+        <ul class="list-inline mt-4">
+          <li class="list-inline-item"><a href="/api/topHeadlines/business">Business</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/entertainment">Entertainment</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/general">General</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/health">Health</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/science">Science</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/sports">Sports</a></li>
+          <li class="list-inline-item"><a href="/api/topHeadlines/technology">Technology</a></li>
         </ul>
         <p class="mb-1">&copy; NewsApp</p>
       </footer>
