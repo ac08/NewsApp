@@ -1,4 +1,8 @@
-const express = require('express');
+const { response } = require('express');
+const express = require('express');const NewsAPI = require('newsapi');
+require('dotenv').config();
+
+const newsapi = new NewsAPI(process.env.NEWSAPIKEY);
 
 const router = express.Router();
 const db = require('../models');
@@ -76,6 +80,21 @@ router.route('/view/:category')
       });
       res.json(dbCategory);
     }());
+  });
+
+// GET Route to retreive articles based on user selected categories
+router.route('/articles')
+  .put((req, res) => {
+    const requestObj = req.body;
+    const categoryName = Object.keys(requestObj);
+    newsapi.v2.topHeadlines({
+      category: categoryName,
+      country: 'us',
+      pageSize: 6,
+      language: 'en'
+    }).then((articles) => {
+      res.send(articles.articles);
+    });
   });
 
 // GET Route to retreive each Category with its associated Users
