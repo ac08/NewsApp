@@ -46,14 +46,12 @@ const db = require('./models');
 // Routes
 // =============================================================
 require('./controllers/banner_controller')(app);
+const apiRouter = require('./controllers/api-routes');
 
-// Middleware
+app.use('/api', apiRouter);
+
+// Addn'l Middleware (something that is executed when everything comes in...)
 // =============================================================
-const userRouter = require('./controllers/users_controller');
-const categoryRouter = require('./controllers/categories_controller');
-
-app.use('/api/user', userRouter);
-app.use('/api/category', categoryRouter);
 app.use((req, res, next) => {
   const err = new Error('Page Not Found!');
   err.status = 404;

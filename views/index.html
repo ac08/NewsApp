@@ -1,46 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <title>NewsApi</title>
+    <meta charset="utf-8">
+    <title>NewsApp</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="container my-5">
-      <div class="text-center">
-        <h1 class="display-4 text-center mb-3">NewsApi Testing</h1>
-        <button class="btn btn-primary my-3" id="headlines">Top Headlines</button>
-        <button class="btn btn-info" id="everything">Everything (Bitcoin)</button>
-        <button class="btn btn-warning" id="tech">Category (Technology)</button>
-        <button class="btn btn-dark" id="1">Add-Category (Business)</button>
-        <button class="btn btn-dark" id="2">Add-Category (Entertainment)</button>
-        <button class="btn btn-dark" id="3">Add-Category (General)</button>
-        
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="">First Name, Last Name, Country Code</span>
-          </div>
-          <input id="first_nm"type="text" class="form-control">
-          <input id="last_nm" type="text" class="form-control">
-          <!-- <input id="country_cd" type="text" class="form-control"> -->
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" id="create" type="button">Create User</button>
-          </div>  
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <h2>Customize Your News Feed</h2>
+          <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
         </div>
+    
+        <div class="row g-3">
+          <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Available Categories</span>
+              <!-- if we have time we should make the value of the below span equal to no. of categories selected -->
+              <!-- <span class="badge bg-secondary rounded-pill">7</span> -->
+            </h4>
+            <ul class="list-group mb-3">
+              <li id="business" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Business</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">1</span>
+              </li>
+              <li id="entertainment" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Entertainment</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">2</span>
+              </li>
+              <li id="general" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">General</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">3</span>
+              </li>
+              <li id="health" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Health</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">4</span>
+              </li>
+              <li id="science" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Science</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">5</span>
+              </li>
+              <li id="sports" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Sports</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">6</span>
+              </li>
+              <li id="technology" class="list-group-item d-flex justify-content-between lh-sm category">
+                <div>
+                  <h6 class="my-0">Technology</h6>
+                  <small class="text-muted">Description</small>
+                </div>
+                <span class="text-muted">7</span>
+              </li>
+            </ul>
+            <button id="submit" class="w-100 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
+          </div>
+          
+          <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">User Information</h4>
+            <form>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="firstname" class="form-label">First name</label>
+                  <input type="text" class="form-control" id="firstname">
+                </div>
+    
+                <div class="col-sm-6">
+                  <label for="lastname" class="form-label">Last name</label>
+                  <input type="text" class="form-control" id="lastname">
+                </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <ul class="list-inline">
+          <!-- on-click events could just route to a page with (6) blog posts related to that category only -->
+          <!-- this would require a dynamic on click event -->
+          <li class="list-inline-item"><a href="api/business">Business</a></li>
+          <li class="list-inline-item"><a href="api/entertainment">Entertainment</a></li>
+          <li class="list-inline-item"><a href="api/general">General</a></li>
+          <li class="list-inline-item"><a href="api/health">Health</a></li>
+          <li class="list-inline-item"><a href="api/science">Science</a></li>
+          <li class="list-inline-item"><a href="api/sports">Sports</a></li>
+          <li class="list-inline-item"><a href="api/technology">Technology</a></li>
+        </ul>
+        <p class="mb-1">&copy; NewsApp</p>
+      </footer>
+    </div>  
 
-      </div>
-      <hr />
-      <div id="res"></div>
-    </div>
     <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/news.js"></script>
+    <script src="/js/bootstrap.min.js"></script>  
+    <script src="/js/news.js"></script>  
+
+
   </body>
 </html>
+
