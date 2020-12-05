@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <title>NewsApp</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <div class="container">
+      <div class="py-5 text-center">
+        <h2>Customize Your News Feed</h2>
+        <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
+        <hr class="m-auto">
+      </div>
       <main>
-        <div class="py-5 text-center">
-          <h2>Customize Your News Feed</h2>
-          <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
-          <hr class="m-auto">
-        </div>
-    
         <div class="row g-3">
           <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -90,10 +90,10 @@
             </form>
           </div>
         </div>
-        
-        <!-- handlebars -->
-        <div id="res"></div>
       </main>
+      <div id="results" class="container">
+        <div id="results-row" class="row mb-2"></div>
+      </div>
     
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <hr>
@@ -109,7 +109,7 @@
         <p class="mb-1">&copy; NewsApp</p>
       </footer>
     </div>  
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js" integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg==" crossorigin="anonymous"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>  
     <script src="/js/news.js"></script>  

@@ -13,6 +13,6 @@ module.exports = (app) => {
 
   // index route loads index.html
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/', '/index.html'));
+    res.sendFile(path.join(__dirname, '/views/', 'index.handlebars'));
   });
 };

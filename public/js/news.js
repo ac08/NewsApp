@@ -10,14 +10,28 @@ $(document).ready(() => {
     const categoryNames = selectedCategories.map(function(categoryData) {
       return categoryData.categoryName;
     });
-    console.log(categoryNames);
     categoryNames.forEach((category) => {
       $.ajax('/api/articles', {
         type: 'PUT',
         data: category
       }).then((data) => {
-        // res.render here...
-        console.log(data);
+        $('main').addClass('d-none');
+        data.forEach((element) => {
+          console.log(element);
+          let resultsRow = $('#results-row');
+          let resultsCol = $('<div>').addClass('col-md-6');
+          resultsCol.appendTo(resultsRow);
+          let postRow = $('<div>').addClass('row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative');
+          postRow.appendTo(resultsCol);
+          let postCol = $('<div>').addClass('col p-4 d-flex flex-column position-static');
+          postCol.appendTo(postRow);
+          let postCategory = $('<strong>').addClass('d-inline-block mb-2 text-primary').html(element.source.name);
+          let postTitle = $('<h3>').addClass('mb-0').html(element.title);
+          let postDate = $('<div>').addClass('mb-1 text-muted').html(moment(element.publishedAt).format("MMM Do YY"));
+          let postContent = $('<p>').addClass('card-text mb-auto').html(element.description);
+          let postURL = $('<a>').addClass('stretched-link').attr('href', 'element.url');
+          postCol.append(postCategory, postTitle, postDate, postContent, postURL);
+        });
       });
     });
   }

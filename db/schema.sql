@@ -7,7 +7,7 @@ CREATE TABLE `users` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
-  `created_at` timestamp COMMENT 'When order created',
+  `created_at` timestamp COMMENT 'When user created',
   `country_code` char(2)
 );
 

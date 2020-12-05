@@ -13,11 +13,17 @@ const db = require('../models');
 // express.Router().route() can be used for chainable routes, meaning
 // one API for all the METHODS (GET, PUT, POST)
 
+// router.route('/')
+//   .get((req, res) => {
+//     res.render('index');
+//   });
+
 // POST Route to create single new User and return to the client
 router.route('/createUserCategories')
   .all((req, res, next) => {
     (async function createUser() {
       const { selectedCategories } = req.body;
+      console.log(selectedCategories);
       const { first_nm } = req.body;
       const { last_nm } = req.body;
       const dbUser = await db.User.create({
@@ -87,14 +93,20 @@ router.route('/articles')
   .put((req, res) => {
     const requestObj = req.body;
     const categoryName = Object.keys(requestObj);
-    newsapi.v2.topHeadlines({
-      category: categoryName,
-      country: 'us',
-      pageSize: 6,
-      language: 'en'
-    }).then((articles) => {
-      res.send(articles.articles);
-    });
+    (async function topHeadlines() {
+      const articles = await newsapi.v2.topHeadlines({
+        category: categoryName,
+        country: 'us',
+        pageSize: 6,
+        language: 'en'
+      });
+      const data = articles.articles;
+      console.log(data);
+      // res.render('index', data, function() {
+      //   res.send('data sent');
+      // });
+      res.send(data);
+    }());
   });
 
 // GET Route to retreive each Category with its associated Users
