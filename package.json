@@ -27,14 +27,13 @@
     "chalk",
     "eslint"
   ],
-  "author": "Group6",
+  "author": "Andrew Circelli",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ac08/NewsApp/issues"
   },
   "homepage": "https://github.com/ac08/NewsApp#readme",
   "dependencies": {
-    "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "chalk": "^4.1.0",
     "debug": "^4.3.1",
@@ -44,7 +43,6 @@
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "newsapi": "^2.4.1",
     "nodemon": "^2.0.6",

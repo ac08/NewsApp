@@ -1,102 +1,71 @@
-# Project 2
+# News App
 
-## Application Requirements
+Build your News feed with the News application. End user will enter their First and Last Name,
+as well as up to seven categories before clicking the 'Render News Feed' button. The buttonw will
+make an api call using the NewsAPI (npm package) and return six articles per each category. The
+articles will render on the page. Refresh the page to engage in another News Feed.
 
-* Must use a Node and Express server
+## Installation Instructions
 
-* Must use Handlebars.js as the template engine
+In order to the use the application, end user will need to download the contents of the project to
+their local machine from GitHub. Following download, the end user should open terminal and 'npm install'
+the package dependencies. After the package dependencies have been downloaded, the end user can start
+the server using either the 'npm start' (MacOS) or 'npm start-WIN' (WindowsOS) command.
 
-* Must be backed by a MySQL database with a Sequelize ORM
+Or access the application from Heroku deployment.
 
-* Must utilize both GET and POST routes for retrieving and adding new data
-
-* Must be deployed using Heroku (with data)
-
-* Must utilize at least one new library, package, or technology that we haven’t discussed
-
-* Must have a polished front end/UI
-
-* Must have a folder structure that meets the MVC paradigm
-
-* Must meet good quality coding standards (indentation, scoping, naming)
-
-* Must protect API keys in Node with environment variables
-  // proxy server
-
-
-## Presentation Requirements
-
-Use this [project presentation template](https://docs.google.com/presentation/d/1_u8TKy5zW5UlrVQVnyDEZ0unGI2tjQPDEpA0FNuBKAw/edit?usp=sharing) to address the following: 
-
-* Elevator pitch: a one minute description of your application
-
-* Concept: What is your user story? What was your motivation for development?
-
-* Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-* Demo: Show your stuff!
-
-* Directions for Future Development
-
-* Links to to the deployed application and the GitHub repository. Use this guide for [deploying your application to Heroku](../04-Important/GitHubHerokuConnect.md) if you need a reminder on how to deploy!
-
-
-## Grading Metrics 
-
-| Metric        | Weight | 
-| ---           | ---    |
-| Concept       | 10%    |
-| Design        | 20%    |
-| Functionality | 30%    |
-| Collaboration | 30%    |
-| Presentation  | 10%    |
-
-
-## Submission on BCS
-
-You are required to submit the following:
+## Access to the application (Heroku)
 
 * The URL of the deployed application
 
-* The URL of the GitHub repository
+## Access to the GitHub Repository
+
+* https://github.com/ac08/NewsApp
 
 
-#### Directory Structure (we will need to set this up per our structure)
-
-Below is how the directory is set up using MVC design.
+#### Directory Structure
 
 ```
 .
 ├── config
-│   ├── connection.js
-│   └── orm.js
-│ 
+│   ├── config.json.
+│
 ├── controllers
-│   └── burgers_controller.js
+│   └── api-routes.js
+│   └── banner-routes.js
+│   └── html-routes.js
 │
 ├── db
 │   ├── schema.sql
 │   └── seeds.sql
 │
 ├── models
-│   └── burger.js
-│ 
+│   └── article.js
+│   └── category.js
+│   └── index.js
+│   └── user.js
+│
 ├── node_modules
 │ 
 ├── package.json
+├── package-lock.json
 │
 ├── public
 │   └── assets
 │       ├── css
-│       │   └── burger_style.css
-│       └── img
-│           └── burger.png
-│   
+│       │   └── style.css
+│       └── js
+│           └── news.js
 │
 ├── server.js
+├── .env
+├── .gitignore
+├── .eslintrc.js
+├── README.md
 │
 └── views
     ├── index.handlebars
+    ├── index.html
     └── layouts
         └── main.handlebars
 ```
