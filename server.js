@@ -25,9 +25,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public/')));
 
 // Serve HTML file for test purposes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/', '/index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/views/', '/index.html'));
+// });
 
 // Serve the corresponding node_modules folder if file is not found in public
 // Allows work offline without reliance on CDN
@@ -46,6 +46,8 @@ const db = require('./models');
 // Routes
 // =============================================================
 require('./controllers/banner-routes')(app);
+require('./controllers/html-routes')(app);
+
 const apiRouter = require('./controllers/api-routes');
 
 app.use('/api', apiRouter);
@@ -83,16 +85,6 @@ db.sequelize
       { category: 'technology' }
     ]);
   })
-  // .then(() => {
-  //   db.User.create({
-  //     first_nm: 'Andrew',
-  //     last_nm: 'Circelli',
-  //     country_cd: 'us'
-  //   })
-  //     .then((user) => {
-  //       user.setSelected_Categories(['1', '2']);
-  //     });
-  // })
   .then(() => {
     app.listen(PORT, () => {
       debug(`listening on PORT ${chalk.green(PORT)}`);
