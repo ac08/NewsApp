@@ -5,9 +5,9 @@ USE news;
 
 CREATE TABLE `users` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255),
-  `last_name` varchar(255),
-  `full_name` varchar(255),
+  `first_nm` varchar(255),
+  `last_nm` varchar(255),
+  `full_nm` varchar(255),
   `created_at` timestamp COMMENT 'When order created',
   `country_code` char(2)
 );
@@ -29,6 +29,7 @@ CREATE TABLE `articles` (
   `publishedAt` datetime
 );
 
+-- UserCategories mock below, created through Sequelize BelongsToMany associations
 CREATE TABLE `UserCategories` (
   `categoryId` int,
   `userId` int
