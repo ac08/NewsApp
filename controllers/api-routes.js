@@ -63,7 +63,7 @@ router.route('/getUserCategories')
     }());
   });
 
-// GET Route to retreive articles based on user selected categories
+// PUT Route to retreive articles based on user selected categories
 router.route('/articles')
   .put((req, res) => {
     const requestObj = req.body;
@@ -76,9 +76,7 @@ router.route('/articles')
         language: 'en'
       });
       const data = articles.articles;
-      // res.render('index', data, function() {
-      //   res.send('data sent');
-      // });
+      // res.render('index', data);
       res.send(data);
     }());
   });

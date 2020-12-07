@@ -12,6 +12,8 @@ their local machine from GitHub. Following download, the end user should open te
 the package dependencies. After the package dependencies have been downloaded, the end user can start
 the server using either the 'npm start' (MacOS) or 'npm start-WIN' (WindowsOS) command.
 
+End user will also need an API key set up for NewsAPI (https://newsapi.org/) and place in an .env file.
+
 Or access the application from Heroku deployment.
 
 ## Access to the application (Heroku)
@@ -58,7 +60,6 @@ Or access the application from Heroku deployment.
 │           └── news.js
 │
 ├── server.js
-├── .env
 ├── .gitignore
 ├── .eslintrc.js
 ├── README.md

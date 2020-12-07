@@ -63,6 +63,8 @@ $(document).ready(() => {
     const categoryName = $(this).find('h6').text();
     let categoryId = $(this).find('span').text();
     // could add some validation to make sure dups aren't entered into the array
+    // also could add remove if already in it
+    // $(this).find('h6').css('color', 'red');
     categoryId = parseInt(categoryId);
     selectedCategories.push({
       categoryId,
