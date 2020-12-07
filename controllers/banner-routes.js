@@ -13,6 +13,7 @@ module.exports = (app) => {
       pageSize: 6,
       language: 'en'
     });
-    res.json(data.articles);
+    res.render('index', data.articles);
+    // res.json(data.articles);
   });
 };

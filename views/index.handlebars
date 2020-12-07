@@ -1,120 +1,112 @@
-<!DOCTYPE html>
-<html>
 
-  <body>
-    <div class="container">
-      <main>
-        <div class="py-5 text-center">
-          <h2>Customize Your News Feed</h2>
-          <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
-          <hr class="m-auto">
-        </div>
-    
-        <div class="row g-3">
-          <div class="col-md-5 col-lg-4 order-md-last">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-muted">Available Categories</span>
-              <span id="counter" class="badge bg-light border pill">0</span>
-            </h4>
-            <ul class="list-group mb-3">
-              <li id="business" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Business</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">1</span>
-              </li>
-              <li id="entertainment" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Entertainment</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">2</span>
-              </li>
-              <li id="general" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">General</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">3</span>
-              </li>
-              <li id="health" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Health</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">4</span>
-              </li>
-              <li id="science" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Science</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">5</span>
-              </li>
-              <li id="sports" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Sports</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">6</span>
-              </li>
-              <li id="technology" class="list-group-item d-flex justify-content-between lh-sm category">
-                <div>
-                  <h6 class="my-0">Technology</h6>
-                  <small class="text-muted">Description</small>
-                </div>
-                <span class="text-muted">7</span>
-              </li>
-            </ul>
-            <button id="submit" class="w-100 mb-2 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
-          </div>
-          
-          <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">User Information</h4>
-            <form>
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <label for="firstname" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="firstname">
-                </div>
-    
-                <div class="col-sm-6">
-                  <label for="lastname" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="lastname">
-                </div>
-            </form>
-          </div>
-        </div>
-        
-        <!-- handlebars -->
-        <div id="res">
-            <ul>
-              {{#each data}}
-              <li>
-                  {{title}}
-              </li>
-              {{/each}}
-            </ul>
-        </div>
-      </main>
-    
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <hr>
-        <ul class="list-inline mt-4">
-          <li class="list-inline-item"><a href="/api/topHeadlines/business">Business</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/entertainment">Entertainment</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/general">General</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/health">Health</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/science">Science</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/sports">Sports</a></li>
-          <li class="list-inline-item"><a href="/api/topHeadlines/technology">Technology</a></li>
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Customize Your News Feed</h2>
+      <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
+      <hr class="m-auto">
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Available Categories</span>
+          <span id="counter" class="badge bg-light border pill">0</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li id="business" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Business</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">1</span>
+          </li>
+          <li id="entertainment" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Entertainment</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">2</span>
+          </li>
+          <li id="general" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">General</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">3</span>
+          </li>
+          <li id="health" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Health</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">4</span>
+          </li>
+          <li id="science" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Science</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">5</span>
+          </li>
+          <li id="sports" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Sports</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">6</span>
+          </li>
+          <li id="technology" class="list-group-item d-flex justify-content-between lh-sm category">
+            <div>
+              <h6 class="my-0">Technology</h6>
+              <small class="text-muted">Description</small>
+            </div>
+            <span class="text-muted">7</span>
+          </li>
         </ul>
-        <p class="mb-1">&copy; NewsApp</p>
-      </footer>
-    </div>  
+        <button id="submit" class="w-100 mb-2 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
+      </div>
+      
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">User Information</h4>
+        <form>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstname" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstname">
+            </div>
 
+            <div class="col-sm-6">
+              <label for="lastname" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastname">
+            </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- handlebars -->
+    <div id="res">
+        <ul>
+          {{#each this}}
+          <li>
+              {{title}}
+          </li>
+          {{/each}}
+        </ul>
+    </div>
+  </main>
 
-  </body>
-</html>
-
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <hr>
+    <ul class="list-inline mt-4">
+      <li class="list-inline-item"><a href="/api/topHeadlines/business">Business</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/entertainment">Entertainment</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/general">General</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/health">Health</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/science">Science</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/sports">Sports</a></li>
+      <li class="list-inline-item"><a href="/api/topHeadlines/technology">Technology</a></li>
+    </ul>
+    <p class="mb-1">&copy; NewsApp</p>
+  </footer>
+</div>

@@ -1,3 +1,25 @@
 .article {
   height: 400px !important;
 }
+
+body{
+  background: rgb(255,255,255);
+background: linear-gradient(101deg, rgba(255,255,255,0.7081578286846033) 0%, rgba(214,230,242,0.8795061432913448) 10%, rgba(176,176,176,0.7306297387969628) 49%, rgba(214,230,242,0.8795061432913448) 90%, rgba(255,255,255,0.71) 100%);
+   
+ }
+
+#firstname{
+  box-shadow: 5px 10px #414040;
+  
+}
+#lastname{
+  box-shadow: 5px 10px #414040;
+
+}
+#counter{
+  box-shadow: 5px 10px #414040;
+}
+
+button{
+  box-shadow: 5px 10px #414040;
+}

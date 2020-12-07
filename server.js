@@ -24,11 +24,6 @@ app.use(express.json());
 // Sets up the Express app to establish a static directory to access static files
 app.use(express.static(path.join(__dirname, '/public/')));
 
-// Serve HTML file for test purposes
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/views/', '/index.html'));
-// });
-
 // Serve the corresponding node_modules folder if file is not found in public
 // Allows work offline without reliance on CDN
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));
@@ -36,9 +31,9 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 
 // Sets up template engine and defaultLayout
+app.set('views', path.join(__dirname, 'views/layouts/'));
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-app.set('views', __dirname, '/views');
 
 // Requiring our models for syncing
 const db = require('./models');
