@@ -6,14 +6,15 @@ const newsapi = new NewsAPI(process.env.NEWSAPIKEY);
 // To query /v2/top-headlines
 // All options passed to topHeadlines are optional, but should include one
 module.exports = (app) => {
-  app.get('/api/topHeadlines/:category/', async (req, res) => {
+  app.get('/:category/', async (req, res) => {
     const data = await newsapi.v2.topHeadlines({
       category: req.params.category,
       country: 'us',
-      pageSize: 6,
+      pageSize: 9,
       language: 'en'
     });
-    res.render('index', data.articles);
-    // res.json(data.articles);
+    const { articles } = data;
+    res.render('articles', { articles });
+    // res.json(articles);
   });
 };

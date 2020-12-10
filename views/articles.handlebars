@@ -1,0 +1,33 @@
+
+<div class="container">
+    <nav role="navigation">
+      <div class="my-4 text-center">
+        <h2>Customize Your News Feed</h2>
+        <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
+        <hr class="m-auto">
+      </div>
+      <ul class="text-center list-inline">
+        {{#each nav}}
+        <li class="list-inline-item"><a href="{{link}}">{{title}}</a></li>
+        {{/each}}
+      </ul>
+   </nav>
+  <div id="results-row" class="row mb-2">
+    {{#each articles}}
+    <div class="col-md-6"> 
+      <div class="row border rounded overflow-hidden flex-md-row mx-1 mb-4 shadow-sm h-md-250 position-relative">
+        <strong class="d-inline-block mb-2 text-primary">{{source.name}}</strong>
+        <h3 class="mb-0">{{title}}</h3>
+        <div class="mb-1 text-muted">{{publishedAt}}</div>
+        <div class="card-text mb-auto">{{description}}</div>
+        <a class="stretched-link my-2" href="{{url}}" target="_blank">Continue Reading</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <hr>
+    <p class="mb-1">&copy; NewsApp</p>
+  </footer>
+</div>

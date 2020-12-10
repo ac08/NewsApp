@@ -1,0 +1,40 @@
+<div class="container">
+   <nav role="navigation">
+    <div class="my-4 text-center">
+      <h2>Customize Your News Feed</h2>
+      <p class="lead">Enter user information and select from the available categories before rendering your feed</p>
+      <hr class="m-auto">
+    </div>
+    <ul class="text-center list-inline">
+      {{#each nav}}
+      <li class="list-inline-item"><a href="{{link}}">{{title}}</a></li>
+      {{/each}}
+    </ul>
+   </nav>
+
+  <main class="mt-4 border border-light">
+    <div class="col-md-5 col-lg-4 order-md-last mx-auto">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Available Categories</span>
+        <span id="counter" class="badge bg-light pill">0</span>
+      </h4>
+      <ul class="list-group mb-3">
+        {{#each dbCategories}}
+        <li id="{{dataValues.id}}" class="category list-group-item d-flex justify-content-between lh-sm">
+          <div>
+            <h6 class="my-0">{{dataValues.category}}</h6>
+            <small class="text-muted">Description</small>
+          </div>
+          <span class="text-muted">{{dataValues.id}}</span>
+        </li>
+        {{/each}}
+      </ul>
+      <button id="submit" class="w-100 mb-2 btn btn-outline-dark btn-sm" type="submit">Render News Feed</button>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <hr>
+    <p class="mb-1">&copy; NewsApp</p>
+  </footer>
+</div>
