@@ -4,32 +4,11 @@ const newsService = require('../services/newsService');
 
 const articleRouter = express.Router();
 
-const articles = [
-  {
-    id: 1,
-    source_nm: 'New York Times',
-    title: 'NYT Article Title',
-    url: 'www.NYT.com',
-    urlToImage: 'www.NYT.com',
-    publishedAt: '2020-12-09T22:21:00Z',
-    content: 'This is the content or description of the article.'
-  },
-  {
-    id: 2,
-    source_nm: 'Boston Globe',
-    title: 'Boston Globe Article Title',
-    url: 'www.BostonGlobe.com',
-    urlToImage: 'www.BostonGlobe.com',
-    publishedAt: '2020-12-09T22:21:00Z',
-    content: 'This is the content or description of the article.'
-  }
-];
-
 function router(nav) {
-  const { getIndex, getByCategory, middleware } = articleController(nav, articles, newsService);
+  const { getFeed, getByCategory, middleware } = articleController(nav, newsService);
   articleRouter.use(middleware);
-  articleRouter.route('/')
-    .get(getIndex);
+  articleRouter.route('/feed')
+    .get(getFeed);
   articleRouter.route('/:category')
     .get(getByCategory);
 

@@ -1,8 +1,24 @@
 const debug = require('debug')('app:articleController');
+const db = require('../models');
 
-function articleController(nav, articles, newsService) {
-  function getIndex(req, res) {
-    res.render('articles', { nav, articles });
+function articleController(nav, newsService) {
+  function getFeed(req, res) {
+    const { id } = req.user;
+    (async function findCategories() {
+      const dbCategories = await db.Category.findAll({
+        where: {
+          userId: id
+        }
+      });
+      const allArticles = [];
+      for (let i = 0; i < dbCategories.length; i++) {
+        const selectedCategory = dbCategories[i].dataValues.category;
+        const selectedArticles = await newsService.myTopHeadlines(selectedCategory);
+        allArticles.push(selectedArticles);
+      }
+      const articles = allArticles[0];
+      res.render('articles', { nav, articles });
+    }());
   }
 
   function getByCategory(req, res) {
@@ -21,7 +37,7 @@ function articleController(nav, articles, newsService) {
     }
   }
   return {
-    getIndex,
+    getFeed,
     getByCategory,
     middleware
   };

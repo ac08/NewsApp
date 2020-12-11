@@ -10,13 +10,11 @@ function newsService() {
       newsapi.v2.topHeadlines({
         category,
         country: 'us',
-        pageSize: 6,
+        pageSize: 3,
         language: 'en'
       })
         .then((response) => {
-          debug(response);
           const { articles } = response;
-          debug(articles);
           resolve(articles);
         })
         .catch((err) => {

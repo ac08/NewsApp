@@ -20,7 +20,7 @@ app.use(morgan('tiny'));
 
 // Sets up the Express app to handle data parsing and cookie parsing
 app.use(express.json());
-app.use(express.urlencoded({ extended: false })); // changed to false
+app.use(express.urlencoded({ extended: true })); // changed to false
 app.use(cookieParser());
 app.use(session({ secret: 'news' }));
 
