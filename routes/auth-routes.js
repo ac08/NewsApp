@@ -48,9 +48,6 @@ function router(nav) {
       } else {
         res.render('profile', req.user);
       }
-      // render account page and then go to page to choose categories
-      // debug(req.user);
-      // res.json(req.user);
     });
   return authRouter;
 }

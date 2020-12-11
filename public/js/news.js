@@ -56,20 +56,25 @@ $(document).ready(() => {
   //   }).then(getArticles);
   // });
 
-  $('.category').on('click', function () {
-    $(this).find('h6').css('color', 'green');
-    counter++;
-    $('#counter').html(counter);
+  $('#init').on('click', function () {
+    $.get('/admin/categories').done(() => {
+      window.location.replace('/admin/categories');
+    });
+  });
 
-    const categoryName = $(this).find('h6').text();
-    let categoryId = $(this).find('span').text();
+  $('.category').on('click', function () {
+    let id = $(this).find('span').text();
+    console.log(id);
+    const category = $(this).find('h6').text().css('color', 'red');
+    console.log(category);
+
     // could add some validation to make sure dups aren't entered into the array
     // also could add remove if already in it
     // $(this).find('h6').css('color', 'red');
-    categoryId = parseInt(categoryId);
+    id = parseInt(id);
     selectedCategories.push({
-      categoryId,
-      categoryName
+      id,
+      category
     });
   });
 }); // end document ready function

@@ -108,17 +108,17 @@ app.use((err, req, res, next) => {
 // =============================================================
 db.sequelize
   .sync({ force: true })
-  // .then(() => {
-  //   db.Category.bulkCreate([
-  //     { category: 'business' },
-  //     { category: 'entertainment' },
-  //     { category: 'general' },
-  //     { category: 'health' },
-  //     { category: 'science' },
-  //     { category: 'sports' },
-  //     { category: 'technology' }
-  //   ]);
-  // })
+  .then(() => {
+    db.Category.bulkCreate([
+      { category: 'Business' },
+      { category: 'Entertainment' },
+      { category: 'General' },
+      { category: 'Health' },
+      { category: 'Science' },
+      { category: 'Sports' },
+      { category: 'Technology' }
+    ]);
+  })
   .then(() => {
     app.listen(PORT, () => {
       debug(`listening on PORT ${chalk.green(PORT)}`);
