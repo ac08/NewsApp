@@ -1,7 +1,3 @@
-const NewsAPI = require('newsapi');
-require('dotenv').config();
-
-const newsapi = new NewsAPI(process.env.NEWSAPIKEY);
 const debug = require('debug')('app:articleController');
 
 function articleController(nav, articles, newsService) {
@@ -11,15 +7,8 @@ function articleController(nav, articles, newsService) {
 
   function getByCategory(req, res) {
     const { category } = req.params;
-    (async function topHeadlines() {
-      const data = await newsapi.v2.topHeadlines({
-        category,
-        country: 'us',
-        pageSize: 6,
-        language: 'en'
-      });
-      const { articles } = data;
-      debug(articles);
+    (async function api() {
+      const articles = await newsService.myTopHeadlines(category);
       res.render('articles', { nav, articles });
     }());
   }
