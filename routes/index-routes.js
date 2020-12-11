@@ -8,7 +8,7 @@ const indexRouter = express.Router();
 function router(nav) {
   indexRouter.route('/')
     .get((req, res) => {
-      debug(req);
+      debug('rendering index page...');
       res.render('index', { nav });
     });
   return indexRouter;

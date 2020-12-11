@@ -6,6 +6,9 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 // Sets up the Express App
 // =============================================================
@@ -15,9 +18,13 @@ const app = express();
 // Sets up Morgan tool
 app.use(morgan('tiny'));
 
-// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsing and cookie parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // changed to false
+app.use(cookieParser());
+app.use(session({ secret: 'news' }));
+
+require('./config/passport.js')(app);
 
 // Sets up template engine and defaultLayout
 // app.set('views', path.join(__dirname, 'views/layouts/'));
@@ -69,10 +76,12 @@ const nav = [
 
 // Routes
 // =============================================================
+const authRouter = require('./routes/auth-routes')(nav);
 const indexRouter = require('./routes/index-routes')(nav);
 const articleRouter = require('./routes/article-routes')(nav);
 const adminRouter = require('./routes/admin-routes')(nav);
 
+app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/articles', articleRouter);
 app.use('/', indexRouter);

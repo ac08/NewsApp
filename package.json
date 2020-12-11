@@ -36,16 +36,19 @@
   "dependencies": {
     "bootstrap": "^4.5.3",
     "chalk": "^4.1.0",
+    "cookie-parser": "^1.4.5",
     "debug": "^4.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
-    "handlebars-helpers": "^0.10.0",
+    "express-session": "^1.17.1",
     "jquery": "^3.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "newsapi": "^2.4.1",
     "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

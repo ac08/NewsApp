@@ -1,14 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    first_nm: {
+    // first_nm: {
+    //   type: DataTypes.STRING(225),
+    //   allowNull: false
+    // },
+    // last_nm: {
+    //   type: DataTypes.STRING(225),
+    //   allowNull: false
+    // },
+    // full_nm: DataTypes.STRING(225),
+    username: {
       type: DataTypes.STRING(225),
       allowNull: false
     },
-    last_nm: {
+    password: {
       type: DataTypes.STRING(225),
       allowNull: false
     },
-    full_nm: DataTypes.STRING(225),
     country_cd: {
       type: DataTypes.STRING(2),
       defaultValue: 'us',
@@ -21,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     timestamps: false,
-    hooks: {
-      beforeCreate: (user) => {
-        user.full_nm = `${user.first_nm} ${user.last_nm}`;
-      }
-    }
+    // hooks: {
+    //   beforeCreate: (user) => {
+    //     user.full_nm = `${user.first_nm} ${user.last_nm}`;
+    //   }
+    // }
   });
   User.associate = (models) => {
     User.hasMany(models.Category, {

@@ -10,37 +10,37 @@ const db = require('../../models');
 // one API for all the METHODS (GET, PUT, POST)
 
 // POST Route to create single new User and return to the client
-// router.route('/createUserCategories')
-//   .all((req, res, next) => {
-//     (async function createUser() {
-//       const { first_nm } = req.body;
-//       const { last_nm } = req.body;
-//       const dbUser = await db.User.create({
-//         first_nm,
-//         last_nm
-//       });
-//       const categoryIds = [];
-//       const { selectedCategories } = req.body;
-//       selectedCategories.forEach((category) => {
-//         const categoryId = parseInt(category.categoryId);
-//         categoryIds.push(categoryId);
-//       });
-//       req.categoryIds = categoryIds;
-//       req.userData = dbUser;
-//       next();
-//     }());
-//   })
-//   .put((req, res) => {
-//     (async function addCategories() {
-//       const { full_nm } = req.userData.dataValues;
-//       const dbUser = await db.User.findAll({
-//         where: { full_nm }
-//       });
-//       // updates UserCategories Table
-//       dbUser[0].addSelected_Categories(req.categoryIds);
-//       res.send('Categories added to selected user');
-//     }());
-//   });
+router.route('/createUserCategories')
+  .all((req, res, next) => {
+    (async function createUser() {
+      const { first_nm } = req.body;
+      const { last_nm } = req.body;
+      const dbUser = await db.User.create({
+        first_nm,
+        last_nm
+      });
+      const categoryIds = [];
+      const { selectedCategories } = req.body;
+      selectedCategories.forEach((category) => {
+        const categoryId = parseInt(category.categoryId);
+        categoryIds.push(categoryId);
+      });
+      req.categoryIds = categoryIds;
+      req.userData = dbUser;
+      next();
+    }());
+  })
+  .put((req, res) => {
+    (async function addCategories() {
+      const { full_nm } = req.userData.dataValues;
+      const dbUser = await db.User.findAll({
+        where: { full_nm }
+      });
+      // updates UserCategories Table
+      dbUser[0].addSelected_Categories(req.categoryIds);
+      res.send('Categories added to selected user');
+    }());
+  });
 
 // GET Route to retreive each User with their selected Categories
 router.route('/getUserCategories')
