@@ -15,8 +15,9 @@ function router(nav) {
             username,
             password
           });
-          debug(dbUser.dataValues);
+          // login information stored in a cookie, deletes when server restarts
           req.login(dbUser.dataValues, () => {
+            // redirect to another page to choose categories...
             res.redirect('/auth/profile');
           });
         } catch (err) {
@@ -41,7 +42,15 @@ function router(nav) {
       }
     })
     .get((req, res) => {
-      res.json(req.user);
+      if (Array.isArray(req.user)) {
+        const user = req.user[0];
+        res.render('profile', user);
+      } else {
+        res.render('profile', req.user);
+      }
+      // render account page and then go to page to choose categories
+      // debug(req.user);
+      // res.json(req.user);
     });
   return authRouter;
 }
