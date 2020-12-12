@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     url: {
       type: DataTypes.STRING,
-      validate: {
-        isUrl: true
-      }
+      // validate: {
+      //   isUrl: true
+      // }
     },
     urlToImage: {
       type: DataTypes.STRING,

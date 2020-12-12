@@ -21,6 +21,20 @@ function articleController(nav, newsService) {
     }());
   }
 
+  function getSavedFeed(req, res) {
+    const { id } = req.user;
+    (async function findSavedArticles() {
+      const dbArticles = await db.Article.findAll({
+        where: {
+          userId: id
+        }
+      });
+      const articles = dbArticles[0];
+      // create new view for MyFeed without Save button etc.
+      res.render('articles', { nav, articles });
+    }());
+  }
+
   function getByCategory(req, res) {
     const { category } = req.params;
     (async function api() {
@@ -39,7 +53,8 @@ function articleController(nav, newsService) {
   return {
     getFeed,
     getByCategory,
-    middleware
+    middleware,
+    getSavedFeed
   };
 }
 
