@@ -18,14 +18,14 @@
     <div class="col-md-6"> 
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col card p-4 d-flex flex-column position-static">
-          <a href="{{url}}" target="_blank" ><img class="card-img-top img-responsive shadow" src="{{urlToImage}}"></a>
+          <a id="url" href="{{url}}" target="_blank"><img id="urlToImage" class="card-img-top img-responsive shadow" src="{{urlToImage}}"></a>
           <div class="card-body">
-            <strong class="d-inline-block mb-2 text-primary">{{source.name}}</strong>
-            <h3 class="card-title mb-0">{{title}}</h3>
-            <div class="mb-1 text-muted">{{publishedAt}}</div>
-            <div class="card-text mb-auto">{{description}}</div>
+            <strong id="source_nm" class="d-inline-block mb-2 text-primary">{{source.name}}</strong>
+            <h3 id="title" class="card-title mb-0">{{title}}</h3>
+            <div id="publishedAt" class="mb-1 text-muted">{{publishedAt}}</div>
+            <div id="description" class="card-text mb-auto">{{description}}</div>
           </div>
-          <a href="/articles/save" class="btn btn-outline-secondary">Save</a>
+          <a class="save btn btn-outline-secondary">Save</a>
         </div>
       </div>
     </div>

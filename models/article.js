@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     publishedAt: DataTypes.DATE,
-    content: DataTypes.TEXT
   }, {
     timestamps: false
   });
@@ -28,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     Article.belongsTo(models.Category, {
       as: 'All_Categories',
       foreignKey: 'categoryId'
+    });
+    Article.belongsTo(models.User, {
+      as: 'User_Ref',
+      foreignKey: 'userId'
     });
   };
   return Article;

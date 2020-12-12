@@ -22,6 +22,31 @@ $(document).ready(() => {
     });
   });
 
+  $('.save').on('click', function () {
+    if ($(this).hasClass('save')) {
+      $(this).removeClass('save');
+      const source_nm = $(this).prev().children('#source_nm').text();
+      const title = $(this).prev().children('#title').text();
+      const description = $(this).prev().children('#description').text();
+      const url = $(this).prev().prev('#url').attr('href');
+      const urlToImage = $(this).prev().prev().children('#urlToImage').attr('src');
+      const publishedAt = $(this).prev().children('#publishedAt').text();
+
+      const articleData = {
+        source_nm,
+        title,
+        description,
+        url,
+        urlToImage,
+        publishedAt
+      };
+      $.ajax('/admin/save', {
+        type: 'POST',
+        data: articleData
+      });
+    }
+  });
+
   $('.category').on('click', function () {
     if ($(this).hasClass('category')) {
       $(this).removeClass('category');

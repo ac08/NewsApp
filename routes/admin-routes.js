@@ -39,6 +39,25 @@ function router(nav) {
         debug('updated categories table');
       }());
     });
+  adminRouter.route('/save')
+    .post((req, res) => {
+      (async function saveArticles() {
+        const {
+          source_nm, title, description, url, urlToImage, publishedAt
+        } = req.body;
+        const { id } = req.user;
+        const dbArticle = await db.Article.create({
+          userId: id,
+          source_nm,
+          title,
+          description,
+          url,
+          urlToImage,
+          publishedAt
+        });
+        debug('updated articles table');
+      }());
+    });
   return adminRouter;
 }
 

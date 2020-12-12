@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'All_Categories',
       foreignKey: 'userId'
     });
+    User.hasMany(models.Article, {
+      as: 'All_Articles',
+      foreignKey: 'userId'
+    });
     User.belongsToMany(models.Category, {
       as: 'Selected_Categories',
       through: 'UserCategories',
