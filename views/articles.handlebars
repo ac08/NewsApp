@@ -14,15 +14,22 @@
    </nav>
   <div id="results-row" class="row mb-2">
     {{#each articles}}
+    <div class="col-md-3"></div>
     <div class="col-md-6"> 
-      <div class="row border rounded overflow-hidden flex-md-row mx-1 mb-4 shadow-sm h-md-250 position-relative">
-        <strong class="d-inline-block mb-2 text-primary">{{source.name}}</strong>
-        <h3 class="mb-0">{{title}}</h3>
-        <div class="mb-1 text-muted">{{publishedAt}}</div>
-        <div class="card-text mb-auto">{{description}}</div>
-        <a class="stretched-link my-2" href="{{url}}" target="_blank">Continue Reading</a>
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col card p-4 d-flex flex-column position-static">
+          <a href="{{url}}" target="_blank" ><img class="card-img-top img-responsive shadow" src="{{urlToImage}}"></a>
+          <div class="card-body">
+            <strong class="d-inline-block mb-2 text-primary">{{source.name}}</strong>
+            <h3 class="card-title mb-0">{{title}}</h3>
+            <div class="mb-1 text-muted">{{publishedAt}}</div>
+            <div class="card-text mb-auto">{{description}}</div>
+          </div>
+          <a href="/articles/save" class="btn btn-outline-secondary">Save</a>
+        </div>
       </div>
     </div>
+    <div class="col-md-3"></div>
     {{/each}}
   </div>
 
