@@ -30,9 +30,10 @@ function articleController(nav, newsService) {
           userId: id
         }
       });
-      const articles = dbArticles[0];
+      debug(dbArticles);
+      const articles = dbArticles;
       // create new view for MyFeed without Save button etc.
-      res.render('articles', { nav, articles });
+      res.render('feed', { nav, articles });
     }());
   }
 

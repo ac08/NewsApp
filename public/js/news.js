@@ -9,9 +9,6 @@ $(document).ready(() => {
     // Make sure to preventDefault on a submit event
     event.preventDefault();
     window.location.replace('/articles/feed');
-    // $.get('/articles/feed').done(() => {
-    //   window.location.replace('/articles/feed');
-    // });
   });
 
   $('#init').on('click', function () {
@@ -21,7 +18,7 @@ $(document).ready(() => {
   });
 
   $('.save').on('click', function () {
-    $(this).css('color', 'green');
+    $(this).hide(600);
     if ($(this).hasClass('save')) {
       $(this).removeClass('save');
       const source_nm = $(this).prev().children('#source_nm').text();
