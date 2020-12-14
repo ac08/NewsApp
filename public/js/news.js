@@ -20,6 +20,7 @@ $(document).ready(() => {
   });
 
   $('.save').on('click', function () {
+    $(this).css('color', 'green');
     if ($(this).hasClass('save')) {
       $(this).removeClass('save');
       const source_nm = $(this).prev().children('#source_nm').text();

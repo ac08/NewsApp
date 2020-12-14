@@ -5,7 +5,9 @@ const newsService = require('../services/newsService');
 const articleRouter = express.Router();
 
 function router(nav) {
-  const { getFeed, getSavedFeed, getByCategory, middleware } = articleController(nav, newsService);
+  const {
+    getFeed, getSavedFeed, getByCategory, middleware
+  } = articleController(nav, newsService);
   articleRouter.use(middleware);
   articleRouter.route('/feed')
     .get(getFeed);
@@ -18,5 +20,3 @@ function router(nav) {
 }
 
 module.exports = router;
-
-// save articles that you like from the categories that you have already selected
