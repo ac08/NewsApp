@@ -10,13 +10,14 @@ function articleController(nav, newsService) {
           userId: id
         }
       });
-      const allArticles = [];
+      const articles = [];
       for (let i = 0; i < dbCategories.length; i++) {
         const selectedCategory = dbCategories[i].dataValues.category;
         const selectedArticles = await newsService.myTopHeadlines(selectedCategory);
-        allArticles.push(selectedArticles);
+        selectedArticles.forEach((articleEl) => {
+          articles.push(articleEl);
+        });
       }
-      const articles = allArticles[0];
       res.render('articles', { nav, articles });
     }());
   }

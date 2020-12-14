@@ -8,9 +8,10 @@ $(document).ready(() => {
   $('#submit').on('click', function(event) {
     // Make sure to preventDefault on a submit event
     event.preventDefault();
-    $.get('/articles/feed').done(() => {
-      window.location.replace('/articles/feed');
-    });
+    window.location.replace('/articles/feed');
+    // $.get('/articles/feed').done(() => {
+    //   window.location.replace('/articles/feed');
+    // });
   });
 
   $('#init').on('click', function () {
