@@ -1,4 +1,3 @@
-// attribute - value pair for Article model
 module.exports = (sequelize, DataTypes) => {
   const Article = sequelize.define('Article', {
     source_nm: DataTypes.STRING,
@@ -9,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.TEXT,
     url: {
       type: DataTypes.STRING,
-      // validate: {
-      //   isUrl: true
-      // }
+      validate: {
+        isUrl: true
+      }
     },
     urlToImage: {
       type: DataTypes.STRING,
@@ -35,5 +34,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Article;
 };
-
-// category should be FK on this table
