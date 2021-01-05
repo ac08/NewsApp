@@ -12,18 +12,17 @@ their local machine from GitHub. Following download, the end user should open te
 the package dependencies. After the package dependencies have been downloaded, the end user can start
 the server using either the 'npm start' (MacOS) or 'npm start-WIN' (WindowsOS) command.
 
-End user will also need an API key set up for NewsAPI (https://newsapi.org/) and place in an .env file.
+End user will also need an API key set up for NewsAPI (https://newsapi.org/) and place in an .env file (create file)
 
 Or access the application from Heroku deployment.
 
 ## Access to the application (Heroku)
 
-* The URL of the deployed application
+- https://mysterious-retreat-98468.herokuapp.com/
 
 ## Access to the GitHub Repository
 
-* https://github.com/ac08/NewsApp
-
+- https://github.com/ac08/NewsApp
 
 #### Directory Structure
 
