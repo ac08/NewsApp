@@ -18,11 +18,11 @@ Or access the application from Heroku deployment.
 
 ## Access to the application (Heroku)
 
-- https://mysterious-retreat-98468.herokuapp.com/
+- https://andrewcircelli-heroku-news.herokuapp.com/
 
 ## Access to the GitHub Repository
 
-- https://github.com/ac08/NewsApp
+- https://github.com/andrewcircelli/NewsDeck
 
 #### Directory Structure
 
