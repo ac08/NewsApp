@@ -1,4 +1,4 @@
-# News App
+# News Deck
 
 Build your News feed with the NewsDeck. End user will enter their First and Last Name,
 as well as up to seven categories before clicking the 'Render News Feed' button. The button will
