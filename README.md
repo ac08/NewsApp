@@ -1,7 +1,7 @@
 # News App
 
-Build your News feed with the News application. End user will enter their First and Last Name,
-as well as up to seven categories before clicking the 'Render News Feed' button. The buttonw will
+Build your News feed with the NewsDeck. End user will enter their First and Last Name,
+as well as up to seven categories before clicking the 'Render News Feed' button. The button will
 make an api call using the NewsAPI (npm package) and return six articles per each category. The
 articles will render on the page. Refresh the page to engage in another News Feed.
 
